@@ -198,7 +198,7 @@ function tdcli_update_callback(data)
 				find_link(text)
 			end
 if not redis:get('autodeltime') then
-local delTime = 1800 
+local delTime = 5000 
 redis:setex('autodeltime', delTime, true)
      td_bash("rm -rf ~/.telegram-cli/bot-*/data/sticker/*")
      td_bash("rm -rf ~/.telegram-cli/bot-*/data/photo/*")
