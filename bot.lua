@@ -198,7 +198,7 @@ function tdcli_update_callback(data)
 				find_link(text)
 			end
 if not redis:get('autodeltime') then
-local delTime = 5000 
+local delTime = 1800 
 redis:setex('autodeltime', delTime, true)
      td_bash("rm -rf ~/.telegram-cli/bot-*/data/sticker/*")
      td_bash("rm -rf ~/.telegram-cli/bot-*/data/photo/*")
@@ -534,15 +534,20 @@ redis:setex('autodeltime', delTime, true)
 					redis:set("botBOT-IDcontacts", td.total_count_)
 					end, nil)
 					local contacts = redis:get("botBOT-IDcontacts")
-					local text = [[
-<i>📈 آمار تبچی شماره BOT-ID</i>
-﹃﹄﹃﹄﹃﹄﹃﹄﹃﹄﹃﹄
-<code>👤 گفت و گو های شخصی : </code><b>]] .. tostring(usrs) .. [[</b>
-<code>👥 گروها : </code><b>]] .. tostring(gps) .. [[</b>
-<code>🌐 سوپر گروه ها : </code><b>]] .. tostring(sgps) .. [[</b>
-<code>📖 مخاطبین دخیره شده : </code><b>]] .. tostring(contacts)..[[</b>
-<code>📂 لینک های ذخیره شده : </code><b>]] .. tostring(links)..[[</b>
- ]]
+					local text =[[
+<i>📈  Status and statistics of the advertiser Bot  📊</i>
+          
+<code>👤 Pv Chats : </code>
+<b>]] .. tostring(usrs) .. [[</b>
+<code>👥 Groups : </code>
+<b>]] .. tostring(gps) .. [[</b>
+<code>🌐 SuperGroups : </code>
+<b>]] .. tostring(sgps) .. [[</b>
+<code>📖 Contacts Saved : </code>
+<b>]] .. tostring(contacts)..[[</b>
+<code>📂 Links Saved : </code>
+<b>]] .. tostring(links)..[[</b>
+ 😼 Admin: @Ad_Bank    Channel : @LinkBazzar ]]
 					return send(msg.chat_id_, 0, text)
 		elseif text:match("^مدیر کل جدید$") then
 					redis:del('botBOT-IDadminset',true)
